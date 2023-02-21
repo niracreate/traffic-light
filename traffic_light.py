@@ -18,11 +18,12 @@ grey = (128, 128, 128)
 car_width = 80
 car_height = 40
 
-#traffic light
+# traffic light
 light_r = 50
 light_pos_x = 700
 light_pos_y = 150
 clock = pygame.time.Clock()
+
 
 def main():
 
@@ -32,7 +33,7 @@ def main():
     light_color = red
     last_color_change_time = time.time()
 
-    #loop
+    # loop
     game_exit = False
     while not game_exit:
 
@@ -42,7 +43,7 @@ def main():
 
         # update color
         elapsed_time = time.time() - last_color_change_time
-        if elapsed_time > 1:  
+        if elapsed_time > 1:
             if light_color == red:
                 light_color = yellow
             elif light_color == yellow:
@@ -50,9 +51,10 @@ def main():
             else:
                 light_color = red
             last_color_change_time = time.time()
+
         game_display.fill(black)
 
-        # draw  traffic light
+        # draw traffic light
         pygame.draw.circle(game_display, black, (light_pos_x, light_pos_y - light_r * 2), light_r)
         if light_color == red:
             pygame.draw.circle(game_display, red, (light_pos_x, light_pos_y - light_r * 2), light_r // 2)
@@ -71,8 +73,10 @@ def main():
         pygame.draw.rect(game_display, white, (car_pos_x, car_pos_y, car_width, car_height))
         pygame.display.update()
         clock.tick(60)
-        pygame.quit()
-        quit()
- 
-    if __name__ == '__main__':
-     main()
+
+    pygame.quit()
+    quit()
+
+
+if __name__ == '__main__':
+    main()
